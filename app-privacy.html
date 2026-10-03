@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>DüConnect - Gizlilik Politikası ve Kullanıcı Sözleşmesi</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .legal-page { 
+            padding-top: 160px; 
+            padding-bottom: 100px; 
+            min-height: 100vh;
+        }
+        .legal-content {
+            background: var(--surface-card);
+            backdrop-filter: blur(24px); 
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: 36px;
+            padding: 56px 48px;
+            box-shadow: var(--glass-shadow);
+            max-width: 960px;
+            margin: 0 auto;
+        }
+        .back-link { 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 8px; 
+            color: var(--primary-color); 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 0.95rem;
+            margin-bottom: 30px; 
+            transition: transform 0.2s ease;
+        }
+        .back-link:hover {
+            transform: translateX(-4px);
+        }
+        .legal-content h1 { 
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.4rem; 
+            margin-bottom: 24px; 
+            font-weight: 800; 
+            color: var(--text-primary); 
+            letter-spacing: -1px;
+            line-height: 1.25;
+        }
+        .doc-separator {
+            margin: 50px 0 36px 0;
+            padding-top: 40px;
+            border-top: 2px solid rgba(37, 99, 235, 0.2);
+        }
+        .doc-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            letter-spacing: -0.5px;
+            margin-bottom: 24px;
+        }
+        .legal-section {
+            margin-bottom: 28px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+        }
+        [data-theme="dark"] .legal-section {
+            border-bottom-color: rgba(255, 255, 255, 0.06);
+        }
+        .legal-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .legal-section h2 { 
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem; 
+            margin-top: 0; 
+            margin-bottom: 12px; 
+            color: var(--text-primary); 
+            font-weight: 800;
+            letter-spacing: -0.3px;
+        }
+        .legal-section h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.15rem;
+            margin-top: 14px;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+        .legal-content p, .legal-content li { 
+            color: var(--text-secondary); 
+            font-size: 1.05rem; 
+            line-height: 1.75; 
+            margin-bottom: 12px; 
+        }
+        .legal-content p:last-child {
+            margin-bottom: 0;
+        }
+        .legal-content ul, .legal-content ol { 
+            padding-left: 24px; 
+            margin-bottom: 16px; 
+        }
+        .legal-content ul li, .legal-content ol li {
+            margin-bottom: 6px;
+        }
+        .legal-content a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .legal-content a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .legal-page { padding-top: 130px; }
+            .legal-content { padding: 36px 24px; border-radius: 24px; }
+            .legal-content h1 { font-size: 1.85rem; }
+            .doc-title { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Mesh Background -->
+    <div class="mesh-bg">
+        <div class="mesh-blob mesh-1"></div>
+        <div class="mesh-blob mesh-2"></div>
+        <div class="mesh-blob mesh-3"></div>
+    </div>
+
+    <!-- Premium Glass Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-image-wrapper">
+                    <img src="images/logo.png" alt="DüConnect Logo" class="logo-img">
+                </div>
+                <div class="logo-text-wrapper">
+                    <span class="logo-title">DüConnect</span>
+                </div>
+            </a>
+            
+            <!-- Mobile Menu Toggle Button -->
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i data-lucide="menu"></i>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html#home">Anasayfa</a></li>
+                <li><a href="index.html#features">Özellikler</a></li>
+                <li><a href="index.html#about">Hakkımızda</a></li>
+                <li><a href="index.html#arena">Arena</a></li>
+                <li><a href="index.html#team">Ekibimiz</a></li>
+                <li><a href="index.html#instagram">Haberler</a></li>
+                <li><a href="index.html#faq">SSS</a></li>
+                <li><a href="index.html#contact">İletişim</a></li>
+            </ul>
+            <div class="nav-right-group" style="display: flex; align-items: center; gap: 12px;">
+                <button class="theme-toggle-btn" onclick="toggleTheme()" title="Temayı Değiştir" style="margin-right: 4px;">
+                    <i data-lucide="moon" class="theme-icon-moon"></i>
+                    <i data-lucide="sun" class="theme-icon-sun"></i>
+                </button>
+                <a href="index.html#download" class="btn btn-primary nav-download-btn">Uygulamayı İndir</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Legal Content Section -->
+    <section class="legal-page">
+        <div class="container">
+            <div class="legal-content">
+                <a href="index.html" class="back-link"><i data-lucide="arrow-left" style="width: 18px; height: 18px;"></i> Ana Sayfaya Dön</a>
+                
+                <!-- BÖLÜM 1: DÜCONNECT KULLANICI SÖZLEŞMESİ -->
+                <h1>DÜCONNECT KULLANICI SÖZLEŞMESİ</h1>
+                
+                <div class="legal-section">
+                    <h2>1. Taraflar ve Kabul</h2>
+                    <p>İşbu Kullanıcı Sözleşmesi (“Sözleşme”);</p>
+                    <p>Hizmet Sağlayıcı / Uygulama Sahibi: Yusuf Enes Kuzu (Şahıs Firması) (“DüConnect”)</p>
+                    <p>Kullanıcı: Uygulama’yı indirerek/kurarak/kullanarak işbu Sözleşme’yi kabul eden kişiarasında elektronik ortamda akdedilmiştir.</p>
+                    <p>Uygulama’nın kullanılmaya başlanması, Sözleşme’nin ve bağlantılı metinlerin (KVKK Aydınlatma Metni, Gizlilik Politikası, Açık Rıza Metni) okunduğu ve kabul edildiği anlamına gelir.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>2. Hizmetin Tanımı ve Kapsamı</h2>
+                    <p>DüConnect; kullanıcıların içerik paylaşabildiği, mesajlaşabildiği, etkinlikleri görüntüleyebildiği, ders notları paylaşabildiği ve benzeri sosyal etkileşimlerde bulunabildiği bir platformdur. DüConnect, hizmet kapsamını geliştirme, değiştirme, durdurma veya sonlandırma hakkını saklı tutar.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>3. Üyelik, Hesap Güvenliği ve Kullanıcı Beyanları</h2>
+                    <p>3.1. Kullanıcı, kayıt olurken verdiği bilgilerin doğru olduğunu; yanıltıcı/başkasına ait bilgi vermeyeceğini kabul eder.3.2. Kullanıcı, hesap güvenliğinden ve hesabı üzerinden yapılan işlemlerden sorumludur.3.3. Kullanıcı, Uygulama’yı hukuka uygun ve dürüst kullanım ilkelerine göre kullanacağını kabul eder.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>4. Kullanıcı İçerikleri ve Lisans</h2>
+                    <p>4.1. Kullanıcı; paylaştığı içeriklerin (gönderiler, ders notları, görseller, yorumlar vb.) hukuka uygun olduğunu, üçüncü kişilerin haklarını ihlal etmediğini ve gerekli izinlere sahip olduğunu beyan eder.
+4.2. Mülkiyet: Kullanıcının paylaştığı içeriğin fikrî mülkiyeti, kural olarak içerik sahibinde kalır.
+4.3. Lisans: Kullanıcı, DüConnect’e; içeriklerini Uygulama’nın işletilmesi, geliştirilmesi, tanıtımı ve pazarlanması dahil olmak üzere; dünya çapında, süresiz, devredilebilir, alt lisans verilebilir, bedelsiz ve gayri münhasır şekilde kullanma, çoğaltma, yayımlama, işleme, uyarlama, temsil etme ve iletme lisansı verdiğini kabul eder.
+4.4. DüConnect; platform bütünlüğü, güvenlik, topluluk kuralları veya hukuki yükümlülükler nedeniyle içerikleri kısmen veya tamamen kaldırabilir, erişimi kısıtlayabilir, görünürlüğünü azaltabilir.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>5. Yasaklı Davranışlar</h2>
+                    <p>Kullanıcı aşağıdaki eylemleri gerçekleştiremez:
+Hakaret, küfür, tehdit, taciz, nefret söylemi içeren paylaşımlar,
+Çocuk cinsel istismarı ve sömürüsü (CSAE) içeren hiçbir materyali paylaşamaz, üretemez, dağıtamaz veya bu yönde teşvikte bulunamaz. DüConnect'in bu konuya kesinlikle sıfır toleransı vardır. İhlal durumunda hesap derhal kalıcı olarak silinir ve yasal mercilere bildirilir.
+Spam, sahte hesap, yanıltıcı içerik veya dolandırıcılığa yönelik faaliyetler,
+Hukuka aykırı içerik paylaşımı veya suç teşkil eden fiillere teşvik,
+Telif hakkı, marka hakkı, kişilik hakları ve özel hayatın gizliliğini ihlal,
+Başkalarına ait kişisel verileri izinsiz paylaşma,
+Uygulama’nın güvenliğini veya itibarını zedeleme, tersine mühendislik, kötüye kullanım, yetkisiz erişim,
+Uygulama’yı mevzuata aykırı amaçlarla kullanma.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>6. Moderasyon, Denetim ve Yaptırımlar</h2>
+                    <p>6.1. DüConnect, topluluk güvenliği ve hukuki uyum için içerikleri ve kullanıcı davranışlarını denetleyebilir. Denetim; otomatik araçlar ve/veya moderatör incelemesini içerebilir.
+6.2. İhlal tespitinde; DüConnect takdirine bağlı olarak:
+Uyarı,
+İçerik kaldırma,
+Geçici askıya alma,
+Kalıcı kapatma (ban)işlemleri uygulanabilir.
+6.3. DüConnect’in bu kapsamda aldığı kararlar, hizmetin güvenliği ve sürekliliği için bağlayıcıdır; ancak Kullanıcı, itirazını iletişim kanallarından iletebilir.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>7. Hesap Silme ve İçeriklerin Durumu</h2>
+                    <p>7.1. Kullanıcı, hesabını Uygulama üzerinden/iletişim kanallarından talep ederek silebilir.
+7.2. Hesap silindiğinde:
+Kullanıcı profili ve içerikleri Uygulama’da gösterilmez,
+Ancak güvenlik, hukuki uyuşmazlıklar ve yasal yükümlülükler için gerekli kayıtlar, en fazla 2 yıl veritabanı sistemlerinde saklanabilir; süre sonunda imha edilir.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>8. Ücretlendirme ve Uygulama İçi Satın Alma</h2>
+                    <p>Uygulama’nın mevcut sürümü ücretsiz olabilir. Gelecekte ücretli özellikler/premium üyelik/uygulama içi satın alma sunulması hâlinde; ücret, kapsam, koşullar ve iade süreçleri ayrıca duyurulur ve gerekli sözleşme/metin güncellemeleri yapılır.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>9. Sorumluluğun Sınırlandırılması</h2>
+                    <p>9.1. Kullanıcı, Uygulama’da paylaştığı içerikten ve Uygulama’yı kullanımından doğan her türlü hukuki/idari sorumluluğun kendisine ait olduğunu kabul eder.
+9.2. DüConnect; Kullanıcıların paylaşımlarının doğruluğunu, güncelliğini veya hukuka uygunluğunu garanti etmez.
+9.3. Uygulama’nın kesintisiz/hatasız çalışacağı garanti edilmez. Teknik arızalar, bakım çalışmaları, altyapı sağlayıcı kaynaklı kesintiler, internet erişimi sorunları gibi nedenlerle hizmette aksama olabilir.
+9.4. DüConnect; dolaylı zararlar, kâr kaybı, veri kaybı, itibar kaybı gibi sonuçlardan; kusuru ve mevzuatın emredici hükümleri saklı kalmak kaydıyla sorumlu tutulamaz.
+9.5. DüConnect’in sorumluluğu doğduğu hâllerde, sorumluluk; ilgili olay bakımından Kullanıcının uğradığı doğrudan zararla ve mevzuatın izin verdiği ölçüyle sınırlıdır.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>10. Üçüncü Taraf Hizmetler</h2>
+                    <p>Uygulama, üçüncü taraf altyapılarla entegre çalışabilir (veritabanı, barındırma, bildirim, analiz, reklam). Bu hizmetlerin kendi koşulları ve kesinti riskleri bulunabilir. DüConnect, üçüncü tarafların eylem/ihmallerinden kaynaklanan ve kontrol alanı dışındaki durumlardan sorumlu tutulamaz; buna rağmen güvenlik ve uyum için makul önlemleri uygular.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>11. Gizlilik ve Kişisel Veriler</h2>
+                    <p>Kişisel verilerin işlenmesi, KVKK Aydınlatma Metni, Gizlilik Politikası ve varsa Açık Rıza Metni kapsamında yürütülür. Kullanıcı bu metinleri okuduğunu ve kabul ettiğini beyan eder.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>12. Sözleşme Değişiklikleri ve Yeniden Onay</h2>
+                    <p>DüConnect, Sözleşme’yi ve bağlı metinleri güncelleyebilir. Önemli değişikliklerde:
+Uygulama içi bildirim ve/veya e-posta ile bilgilendirme yapılır,
+Gerekli hâllerde Kullanıcıdan yeniden onay istenir.Kullanıcı onay vermezse, Uygulama’nın bazı özellikleri veya tamamı kullanılamayabilir.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>13. Uygulanacak Hukuk ve Yetkili Mahkeme</h2>
+                    <p>İşbu Sözleşme Türkiye Cumhuriyeti hukukuna tabidir. Uyuşmazlıklarda Düzce Mahkemeleri ve İcra Daireleri yetkilidir.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>14. İletişim</h2>
+                    <p>Her türlü soru ve talep için:
+E-posta: <a href="mailto:duconnectresmi@gmail.com">duconnectresmi@gmail.com</a>
+Adres: Düzce Merkez, Türkiye</p>
+                </div>
+
+                <!-- BÖLÜM 2: DÜCONNECT GİZLİLİK POLİTİKASI -->
+                <div class="doc-separator">
+                    <h2 class="doc-title">DÜCONNECT GİZLİLİK POLİTİKASI</h2>
+                </div>
+
+                <div class="legal-section">
+                    <h2>1. Amaç</h2>
+                    <p>İşbu Gizlilik Politikası (“Politika”), Uygulama’yı kullanan Kullanıcıların kişisel verilerinin hangi esaslarla işlendiğini, hangi güvenlik tedbirlerinin uygulandığını ve Kullanıcıların veri gizliliği kapsamındaki tercihlerini açıklamak için hazırlanmıştır.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>2. Hangi Verileri Neden Toplarız?</h2>
+                    <p>Uygulama’nın çalışması için asgari düzeyde veri işlenir:
+Hesap oluşturma ve hizmetin sunumu (kimlik/iletişim)
+Güvenlik ve istismar önleme (log/cihaz)
+İçerik paylaşımı ve topluluk etkileşimi (kullanıcı içerikleri)
+Hizmet kalitesi, performans ve hata analizi (teknik kullanım verileri)
+Reklam/ölçümleme (varsa açık rıza kapsamında)</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>3. Veriler Nerede Saklanır?</h2>
+                    <p>Veriler; Uygulama’nın çalışması için kullanılan veritabanı sistemlerinde saklanır. Teknik altyapı; bulut tabanlı veritabanı ve/veya ilişkisel veritabanı gibi çözümler içerebilir. Bazı altyapı bileşenleri yurt dışında konumlanabilir.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>4. Veriler Satılır mı?</h2>
+                    <p>Hayır. Kişisel verileriniz ve Uygulama içeriğiniz:
+Hiçbir şekilde üçüncü kişilere satılmaz,
+Ticari meta olarak kullanılmaz,
+Yalnızca bu Politika ve Aydınlatma Metni’nde belirtilen amaçlarla ve gerekli hizmet sağlayıcılarla, amaçla sınırlı şekilde paylaşılabilir.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>5. Kimlerle Paylaşırız?</h2>
+                    <p>Veriler, yalnızca:
+Teknik hizmet sağlayıcıları (barındırma, veritabanı, bildirim, güvenlik, destek),
+Yasal zorunluluk hâlinde kamu kurumları,
+Uyuşmazlık hâlinde hukuk/denetim süreçlerikapsamında ve gereken ölçüde paylaşılır.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>6. Reklam ve Benzeri Teknolojiler</h2>
+                    <p>Uygulama içinde reklam gösterimi ve ölçümleme yapılabilir. Bu kapsamda:
+Cihaz/uygulama tanımlayıcıları ve kullanım verileri işlenebilir,
+İzinlerinize bağlı olarak reklam ve ölçümleme altyapıları kullanılabilir.
+“Çerez” terimi ağırlıklı olarak web siteleri için kullanılsa da; mobil uygulamalarda benzer işlev, SDK’lar ve cihaz tanımlayıcıları ile görülebilir. Reklam/ölçümleme tercihlerinizi Uygulama ayarlarından ve cihaz gizlilik ayarlarından yönetebilirsiniz.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>7. Veri Güvenliği</h2>
+                    <p>Verilerinizin güvenliği için makul teknik ve idarî tedbirler uygulanır (erişim kontrolü, yetkilendirme, loglama, güncellemeler, saldırı/istismar tespiti vb.). Buna rağmen internet tabanlı sistemlerde mutlak güvenlik garanti edilemez. Şüpheli durumlarda gerekli incelemeler yapılır ve hukuki yükümlülükler kapsamında hareket edilir.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>8. Hesap Silme, Görünürlük ve Saklama</h2>
+                    <p>Kullanıcı hesabı silindiğinde:
+Hesap, Uygulama üzerinde pasife alınır ve görünürlük kaldırılır,
+Kullanıcının paylaştığı postlar/ders notları ve benzeri içerikler Uygulama üzerinde gösterilmez,
+Ancak güvenlik, hukuki uyuşmazlıklar ve yasal yükümlülükler nedeniyle ilgili kayıtlar en fazla 2 yıl veritabanında saklanabilir ve sürenin sonunda imha edilir.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>9. Politika Değişiklikleri</h2>
+                    <p>Bu Politika, hizmet gerekleri ve mevzuat değişiklikleri nedeniyle güncellenebilir. Önemli değişikliklerde:
+Uygulama içi bildirim ve/veya e-posta ile bilgilendirme yapılır,
+Gerekli görülen hâllerde Kullanıcıdan yeniden onay alınır.Onay verilmemesi hâlinde, Uygulama’nın bazı fonksiyonları veya tamamı kullanılamayabilir.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>10. İletişim</h2>
+                    <p>Gizlilikle ilgili talepler için: <a href="mailto:duconnectresmi@gmail.com">duconnectresmi@gmail.com</a></p>
+                </div>
+
+                <!-- BÖLÜM 3: DÜCONNECT MOBİL UYGULAMASI KVKK AYDINLATMA METNİ -->
+                <div class="doc-separator">
+                    <h2 class="doc-title">DÜCONNECT MOBİL UYGULAMASI KVKK AYDINLATMA METNİ</h2>
+                </div>
+
+                <div class="legal-section">
+                    <h2>1. Amaç ve Kapsam</h2>
+                    <p>İşbu KVKK Aydınlatma Metni (“Aydınlatma Metni”), 6698 sayılı Kişisel Verilerin Korunması Kanunu (“KVKK”) m.10 uyarınca; DüConnect mobil uygulaması (“Uygulama”) üzerinden sunulan hizmetlerden yararlanan kullanıcıların (“Kullanıcı”) kişisel verilerinin işlenmesine ilişkin olarak aydınlatılması amacıyla hazırlanmıştır.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>2. Veri Sorumlusu</h2>
+                    <p>KVKK kapsamında veri sorumlusu:
+Unvan / İşletme Türü: Yusuf Enes Kuzu – Şahıs Firması
+Vergi No: 6010496185
+İrtibat Kişisi: Yusuf Enes Kuzu
+E-posta: <a href="mailto:duconnectresmi@gmail.com">duconnectresmi@gmail.com</a>
+Adres: Düzce Merkez, Türkiye</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>3. İşlenen Kişisel Veri Kategorileri</h2>
+                    <p>Uygulama kapsamında, hizmetin niteliğine ve Kullanıcı tercih/izinlerine bağlı olarak aşağıdaki veri kategorileri işlenebilir:</p>
+                    
+                    <h3>3.1. Kimlik ve İletişim Verileri</h3>
+                    <p>Ad–soyad<br>E-posta adresi<br>(Varsa) telefon numarası</p>
+
+                    <h3>3.2. Hesap ve İşlem Güvenliği Verileri</h3>
+                    <p>IP adresi<br>Oturum kayıtları, erişim kayıtları, log kayıtları<br>Şüpheli işlem/istismar tespiti için güvenlik kayıtları</p>
+
+                    <h3>3.3. Cihaz ve Uygulama Kullanım Verileri</h3>
+                    <p>Cihaz modeli, işletim sistemi sürümü, uygulama sürümü<br>Uygulama içi kullanım/etkileşim verileri (performans, hata kayıtları vb.)<br>Tanıtım/ölçümleme amaçlı reklam tanımlayıcıları veya benzeri çevrimiçi tanımlayıcılar (izin ve ayarlarınıza bağlı olarak)</p>
+
+                    <h3>3.4. İçerik ve Paylaşım Verileri (Kullanıcı Tarafından Sağlanan)</h3>
+                    <p>Gönderiler, yorumlar, paylaşılan ders notları ve benzeri içerikler<br>Profil fotoğrafı / içerik görselleri (yüklemeniz hâlinde)</p>
+
+                    <h3>3.5. Konum ve Kamera İzni Kapsamındaki Veriler (İzin Verilirse)</h3>
+                    <p>Konum bilgisi (cihaz izinleri kapsamında ve yalnızca izin verilmesi hâlinde)<br>Kamera erişimi ile elde edilen görüntü(ler) (yalnızca Kullanıcının talep ettiği işlem için, izin verilmesi hâlinde)</p>
+                    <p>Uygulama, kimlik doğrulama amacıyla T.C. kimlik numarası, biyometrik veri vb. veri kategorilerini işlemeyi hedeflemez.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>4. Kişisel Verilerin İşlenme Amaçları</h2>
+                    <p>Kişisel verileriniz, KVKK m.5 ve m.6’daki şartlar çerçevesinde aşağıdaki amaçlarla işlenebilir:
+Üyelik/kayıt süreçlerinin yürütülmesi ve hesap oluşturulması
+Uygulama hizmetlerinin sunulması ve işletilmesi (içerik paylaşımı, mesajlaşma, etkinliklerin listelenmesi, not paylaşımı vb.)
+Kullanıcı deneyiminin iyileştirilmesi, hizmet kalitesinin artırılması, performans ve hata analizleri
+Bilgi güvenliği süreçlerinin yürütülmesi, dolandırıcılık/istismar/ihlalin önlenmesi ve tespiti
+Müşteri iletişimi ve destek süreçlerinin yürütülmesi
+Hukuki uyuşmazlıkların yönetimi ve olası ihtilaflarda delil niteliğinde kayıtların saklanması
+Mevzuattan doğan yükümlülüklerin yerine getirilmesi
+Reklam, kampanya ve bilgilendirme faaliyetleri (varsa ve gerekli hâllerde açık rıza ile)</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>5. Kişisel Verilerin İşlenmesinin Hukuki Sebepleri</h2>
+                    <p>Kişisel verileriniz aşağıdaki hukuki sebeplerle işlenebilir:
+Sözleşmenin kurulması veya ifası için gerekli olması (KVKK m.5/2-c)
+Veri sorumlusunun hukuki yükümlülüğünü yerine getirmesi (KVKK m.5/2-ç)
+Bir hakkın tesisi, kullanılması veya korunması (KVKK m.5/2-e)
+Veri sorumlusunun meşru menfaati (KVKK m.5/2-f) (ör. güvenlik, hizmetin sürdürülebilirliği, istismar önleme)
+Açık rıza (KVKK m.5/1) (ör. pazarlama iletileri, konum, kamera, reklam/ölçümleme gibi belirli işlemler)</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>6. Kişisel Verilerin Toplanma Yöntemleri</h2>
+                    <p>Kişisel verileriniz;
+Uygulama kayıt ekranları ve profil alanları,
+Uygulama içi kullanım sırasında otomatik yollarla oluşan kayıtlar,
+Cihaz izinleri (konum, kamera vb.),
+Destek talepleri ve elektronik iletişim kanallarıvasıtasıyla elektronik ortamda toplanır.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>7. Kişisel Verilerin Aktarılması</h2>
+                    <p>Kişisel verileriniz, amaçla sınırlı olmak kaydıyla ve gerekli teknik/idarî tedbirler alınarak; KVKK m.8 ve m.9 kapsamında aşağıdaki alıcı gruplarına aktarılabilir:</p>
+                    
+                    <h3>7.1. Yurt İçinde Aktarım</h3>
+                    <p>Hizmet sağlayıcılar (barındırma, bakım, güvenlik, destek, bildirim altyapısı vb.)
+Yetkili kamu kurum ve kuruluşları (yasal zorunluluk hâlinde)
+Hukuk danışmanları ve uyuşmazlık çözümü kapsamındaki taraflar (gerektiğinde)</p>
+
+                    <h3>7.2. Yurt Dışına Aktarım (Bulut Altyapıları)</h3>
+                    <p>Uygulamanın çalışması kapsamında, bulut tabanlı veritabanı ve/veya barındırma altyapıları ile uygulama bildirim/analiz gibi teknik hizmetler kullanılabilir. Bu durumda veriler, hizmetin sunulabilmesi amacıyla yurt dışında bulunan sunuculara aktarılabilir.
+Yurt dışına aktarım, mevzuata uygun koruma tedbirleri ve gerekli hâllerde açık rıza alınarak gerçekleştirilir.
+Kullanılan teknik altyapı, hizmetin sunulabilmesi için zorunlu olabilir; bu zorunluluk, aktarımın kapsamını genişletmez; amaçla sınırlı aktarım yapılır.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>8. Kişisel Verilerin Saklama Süresi ve İmha</h2>
+                    <p>Kişisel verileriniz, işleme amaçlarının gerektirdiği süre kadar ve ilgili mevzuatta öngörülen zamanaşımı/saklama süreleri boyunca saklanır.
+Hesap silme talebi sonrasında: Uygulama görünürlüğü kapatılır; içerikler ve kayıtlar uygulama üzerinde gösterilmez.
+Buna rağmen, olası ihtilaflar, güvenlik ve yasal yükümlülükler kapsamında; hesap ve içerik kayıtları en fazla 2 (iki) yıl süreyle veritabanı sistemlerinde saklanabilir ve sürenin sonunda imha edilir.
+Saklama süreleri; talebin niteliğine, uyuşmazlık bulunup bulunmadığına ve yasal yükümlülüklere göre değişebilir.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>9. KVKK Kapsamındaki Haklarınız</h2>
+                    <p>KVKK m.11 uyarınca veri sahibi olarak;
+Kişisel verilerinizin işlenip işlenmediğini öğrenme,
+İşlenmişse bilgi talep etme,
+İşlenme amacını ve amaca uygun kullanılıp kullanılmadığını öğrenme,
+Yurt içinde/yurt dışında aktarıldığı üçüncü kişileri bilme,
+Eksik/yanlış işlenmişse düzeltilmesini isteme,
+KVKK m.7 kapsamında silinmesini/yok edilmesini isteme,
+Aktarılan üçüncü kişilere bildirilmesini isteme,
+Otomatik sistemlerle aleyhe sonuca itiraz etme,
+Kanuna aykırı işleme nedeniyle zarar doğarsa giderilmesini talep etmehaklarına sahipsiniz.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>10. Başvuru Usulü</h2>
+                    <p>Haklarınızı kullanmak için, kimliğinizi teyit edici bilgilerle birlikte talebinizi <a href="mailto:duconnectresmi@gmail.com">duconnectresmi@gmail.com</a> adresine iletebilirsiniz. Başvurular, mevzuatta öngörülen süreler içinde yanıtlanır.</p>
+                </div>
+
+                <!-- BÖLÜM 4: DÜCONNECT AÇIK RIZA METNİ -->
+                <div class="doc-separator">
+                    <h2 class="doc-title">DÜCONNECT AÇIK RIZA METNİ</h2>
+                </div>
+
+                <div class="legal-section">
+                    <h2>1. Genel Bilgilendirme</h2>
+                    <p>Aydınlatma Metni’ni okuduğumu ve anladığımı kabul ederim. Aşağıdaki hususlarda kişisel verilerimin işlenmesine açık rıza veriyorum / vermiyorum. Açık rıza vermem, Uygulama’nın temel üyelik/hizmet fonksiyonlarının tamamını otomatik olarak engellemez; ancak bazı özellikler (ör. konum/kamera) çalışmayabilir.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>2. Açık Rıza Seçenekleri</h2>
+                    
+                    <h3>2.1. Reklam / Ölçümleme ve İstatistik</h3>
+                    <p>Uygulama içinde reklamların sunulması ve reklam etkinliğinin ölçümlenmesi ile hizmetin geliştirilmesine yönelik istatistiksel analizlerin yapılması amacıyla; cihaz/uygulama kullanım verilerimin ve çevrimiçi tanımlayıcılarımın işlenmesine ve bu kapsamda hizmet sağlayıcılara aktarılmasına açık rıza veriyorum.</p>
+
+                    <h3>2.2. Pazarlama ve Kampanya İletişimi</h3>
+                    <p>Tarafıma e-posta ve/veya uygulama içi bildirim yoluyla kampanya, duyuru ve bilgilendirme içerikleri gönderilmesine açık rıza veriyorum.</p>
+
+                    <h3>2.3. Konum İzni</h3>
+                    <p>Konum verimin, yalnızca Uygulama’nın ilgili fonksiyonlarının çalışması amacıyla işlenmesine açık rıza veriyorum. (Konum iznini cihaz ayarlarından kapatabileceğimi biliyorum.)</p>
+
+                    <h3>2.4. Kamera İzni</h3>
+                    <p>Kamera erişimi aracılığıyla elde edilen görüntünün, yalnızca benim talep ettiğim işlem için kullanılmasına açık rıza veriyorum. (Kamera iznini cihaz ayarlarından kapatabileceğimi biliyorum.)</p>
+
+                    <p>Açık rıza tercihlerinizi, Uygulama içi ayarlardan ve/veya cihaz izinlerinden yönetebilirsiniz.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer with Legal Links -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">DüConnect</div>
+                <div class="footer-links">
+                    <a href="gizlilik.html">Gizlilik Sözleşmesi</a>
+                    <a href="kvkk.html">KVKK Aydınlatma Metni</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 DüConnect. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Back to Top Button -->
+    <button id="backToTop" class="back-to-top" onclick="scrollToTop()" title="Yukarı Çık">
+        <i data-lucide="arrow-up" style="width: 20px; height: 20px;"></i>
+    </button>
+
+    <script src="script.js"></script>
+    <script>
+      lucide.createIcons();
+    </script>
+</body>
+</html>

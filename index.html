@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DüConnect - Yeni Nesil Kampüs Ağı</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('duconnect-theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+    <!-- Ambient Visual Background Layers -->
+    <div class="mesh-bg">
+        <div class="tech-grid-pattern"></div>
+        <div class="ambient-glow glow-hero"></div>
+        <div class="ambient-glow glow-arena"></div>
+        <div class="ambient-glow glow-download"></div>
+        
+        <!-- Blueprint Wireframe Phones (Desktop Visuals) -->
+        <div class="bg-wireframe-phone bg-phone-left">
+            <svg viewBox="0 0 340 680" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Phone Outline & Bezel -->
+                <rect x="10" y="10" width="320" height="660" rx="48" stroke="currentColor" stroke-width="2.5" stroke-dasharray="8 6"/>
+                <rect x="24" y="24" width="292" height="632" rx="38" stroke="currentColor" stroke-width="1.5"/>
+                
+                <!-- Dynamic Island / Notch -->
+                <rect x="120" y="38" width="100" height="24" rx="12" stroke="currentColor" stroke-width="1.8"/>
+                
+                <!-- UI Blueprint Wireframe Cards -->
+                <rect x="44" y="86" width="252" height="110" rx="16" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4"/>
+                <circle cx="74" cy="120" r="14" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="102" y1="114" x2="260" y2="114" stroke="currentColor" stroke-width="2"/>
+                <line x1="102" y1="130" x2="210" y2="130" stroke="currentColor" stroke-width="1.5" opacity="0.7"/>
+
+                <rect x="44" y="214" width="118" height="130" rx="16" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="178" y="214" width="118" height="130" rx="16" stroke="currentColor" stroke-width="1.5"/>
+                
+                <rect x="44" y="362" width="252" height="140" rx="16" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4"/>
+                <circle cx="74" cy="400" r="14" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="102" y1="394" x2="260" y2="394" stroke="currentColor" stroke-width="2"/>
+                <line x1="102" y1="410" x2="220" y2="410" stroke="currentColor" stroke-width="1.5" opacity="0.7"/>
+
+                <!-- Bottom Home Bar -->
+                <line x1="110" y1="630" x2="230" y2="630" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+            </svg>
+        </div>
+        
+        <div class="bg-wireframe-phone bg-phone-right">
+            <svg viewBox="0 0 340 680" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Phone Outline & Bezel -->
+                <rect x="10" y="10" width="320" height="660" rx="48" stroke="currentColor" stroke-width="2.5" stroke-dasharray="8 6"/>
+                <rect x="24" y="24" width="292" height="632" rx="38" stroke="currentColor" stroke-width="1.5"/>
+                
+                <!-- Dynamic Island / Notch -->
+                <rect x="120" y="38" width="100" height="24" rx="12" stroke="currentColor" stroke-width="1.8"/>
+                
+                <!-- UI Blueprint Wireframe Cards -->
+                <rect x="44" y="86" width="252" height="140" rx="16" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="74" cy="130" r="18" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="110" y1="122" x2="260" y2="122" stroke="currentColor" stroke-width="2"/>
+                <line x1="110" y1="140" x2="210" y2="140" stroke="currentColor" stroke-width="1.5" opacity="0.7"/>
+
+                <rect x="44" y="244" width="252" height="90" rx="16" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4"/>
+                <rect x="44" y="352" width="252" height="150" rx="16" stroke="currentColor" stroke-width="1.5"/>
+
+                <!-- Bottom Home Bar -->
+                <line x1="110" y1="630" x2="230" y2="630" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Premium Glass Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-image-wrapper">
+                    <img src="images/logo.png" alt="DüConnect Logo" class="logo-img">
+                </div>
+                <div class="logo-text-wrapper">
+                    <span class="logo-title">DüConnect</span>
+                </div>
+            </div>
+            
+            <div class="nav-actions-mobile">
+                <button id="mobileThemeToggleBtn" class="theme-toggle-btn mobile-toggle" onclick="toggleTheme()" title="Temayı Değiştir">
+                    <i data-lucide="moon" class="theme-icon-moon"></i>
+                    <i data-lucide="sun" class="theme-icon-sun"></i>
+                </button>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" onclick="closeMobileMenu()">Anasayfa</a></li>
+                <li><a href="#features" onclick="closeMobileMenu()">Özellikler</a></li>
+                <li><a href="#about" onclick="closeMobileMenu()">Hakkımızda</a></li>
+                <li><a href="#arena" onclick="closeMobileMenu()">Arena</a></li>
+                <li><a href="#team" onclick="closeMobileMenu()">Ekibimiz</a></li>
+                <li><a href="#instagram" onclick="closeMobileMenu()">Haberler</a></li>
+                <li><a href="#faq" onclick="closeMobileMenu()">SSS</a></li>
+                <li><a href="#contact" onclick="closeMobileMenu()">İletişim</a></li>
+            </ul>
+            
+            <div class="nav-right-group">
+                <button id="desktopThemeToggleBtn" class="theme-toggle-btn desktop-toggle" onclick="toggleTheme()" title="Temayı Değiştir (Açık / Koyu)">
+                    <i data-lucide="moon" class="theme-icon-moon"></i>
+                    <i data-lucide="sun" class="theme-icon-sun"></i>
+                </button>
+                <a href="#download" class="btn btn-primary nav-download-btn">Uygulamayı İndir</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero scroll-animation-container">
+        <div class="container hero-container" style="flex-direction: column; text-align: center; gap: 24px;">
+            
+            <div class="hero-content" style="max-width: 720px; margin: 0 auto;">
+                <h1 id="hero-title">Üniversite Hayatınızı <br><span class="highlight">Tek Noktadan</span> Yönetin</h1>
+                <p>DüConnect ile ders notlarına, etkinliklere ve kampüs içi iletişime anında ulaşın. Uygulamamızı hemen test edebilir ve aramıza katılabilirsiniz.</p>
+                <div class="hero-actions" style="justify-content: center; display: flex; gap: 14px; flex-wrap: wrap;">
+                    <a href="#download" class="btn btn-primary btn-large">
+                        <i data-lucide="download" style="width: 18px; height: 18px;"></i>
+                        Hemen İndirin
+                    </a>
+                    <a href="#features" class="btn btn-secondary btn-large">
+                        Özellikleri Keşfet ↓
+                    </a>
+                </div>
+            </div>
+
+            <!-- Phone Mockup -->
+            <div class="hero-mockup" style="position: relative; width: 100%; display: flex; justify-content: center; margin-top: 10px;">
+                
+                <!-- Desktop Interactive Demo Popup (Refined Mini Card) -->
+                <aside class="interactive-demo-popup" id="interactiveDemoPopup" aria-label="Canlı Demo">
+                    <div class="demo-card-header">
+                        <span class="demo-card-badge">
+                            <span class="demo-pulse-indicator"></span>
+                            Canlı Demo
+                        </span>
+                        <button class="demo-popup-close-btn" onclick="closeDemoPopup()" title="Kapat" aria-label="Kapat">✕</button>
+                    </div>
+                    <p class="demo-card-body">Arayüzü deneyimlemek için
+interaktif noktalara
+göz atın.</p>
+                </aside>
+
+                <div class="phone-frame android-frame" id="hero-phone">
+                    <!-- Android: Punch-hole Camera -->
+                    <div class="android-camera"></div>
+
+                    <div class="phone-screen">
+                        <!-- Global Top Hamburger Button (Active on all main screens) -->
+                        <button id="globalHamburger" class="hotspot global-hamburger" onclick="openMenu()" title="Menü Aç"></button>
+
+                        <!-- Global Bottom Navigation Bar (5 tabs active on all screens) -->
+                        <div class="global-bottom-nav">
+                            <button class="nav-tab-btn tab-home" onclick="changeScreen('screen-home')" title="Ana Sayfa"></button>
+                            <button class="nav-tab-btn tab-saved" onclick="changeScreen('screen-kaydedilenler')" title="Kaydedilenler"></button>
+                            <button class="nav-tab-btn tab-arena" onclick="changeScreen('screen-arena')" title="Arena"></button>
+                            <button class="nav-tab-btn tab-notifications" onclick="changeScreen('screen-bildirimler')" title="Bildirimler"></button>
+                            <button class="nav-tab-btn tab-profile" onclick="changeScreen('screen-profil')" title="Profil"></button>
+                        </div>
+
+                        <div class="app-screenshots">
+
+                            <!-- 1. Ana Sayfa -->
+                            <div class="screen active" id="screen-home">
+                                <div class="screenshot-img" style="background-image: url('images/screens/anasayfa.jpg');"></div>
+                            </div>
+
+                            <!-- 2. Kaydedilenler -->
+                            <div class="screen" id="screen-kaydedilenler">
+                                <div class="screenshot-img" style="background-image: url('images/screens/kaydedilenler.jpg');"></div>
+                            </div>
+
+                            <!-- 3. Arena -->
+                            <div class="screen" id="screen-arena">
+                                <div class="screenshot-img" style="background-image: url('images/screens/arena.jpg');"></div>
+                            </div>
+
+                            <!-- 4. Bildirimler -->
+                            <div class="screen" id="screen-bildirimler">
+                                <div class="screenshot-img" style="background-image: url('images/screens/bildirimler.jpg');"></div>
+                            </div>
+
+                            <!-- 5. Profil -->
+                            <div class="screen" id="screen-profil">
+                                <div class="screenshot-img" style="background-image: url('images/screens/profil.jpg');"></div>
+                            </div>
+
+                            <!-- 6. Etkinlikler -->
+                            <div class="screen" id="screen-etkinlikler">
+                                <div class="screenshot-img" style="background-image: url('images/screens/etkinlikler.jpg');"></div>
+                            </div>
+
+                            <!-- 7. Fırsatlar -->
+                            <div class="screen" id="screen-firsatlar">
+                                <div class="screenshot-img" style="background-image: url('images/screens/firsatlar.jpg');"></div>
+                            </div>
+
+                            <!-- 8. Ders Notları -->
+                            <div class="screen" id="screen-dersnotalari">
+                                <div class="screenshot-img" style="background-image: url('images/screens/dersnotalari.jpg');"></div>
+                            </div>
+
+                            <!-- 9. Freelance -->
+                            <div class="screen" id="screen-freelance">
+                                <div class="screenshot-img" style="background-image: url('images/screens/freelance.jpg');"></div>
+                            </div>
+
+                            <!-- 10. İş ve Staj -->
+                            <div class="screen" id="screen-isvastaj">
+                                <div class="screenshot-img" style="background-image: url('images/screens/isvastaj.jpg');"></div>
+                            </div>
+
+                            <!-- 11. Mekanlar -->
+                            <div class="screen" id="screen-mekanlar">
+                                <div class="screenshot-img" style="background-image: url('images/screens/mekanlar.jpg');"></div>
+                            </div>
+
+                            <!-- 12. İletişim -->
+                            <div class="screen" id="screen-iletisim">
+                                <div class="screenshot-img" style="background-image: url('images/screens/iletisim.jpg');"></div>
+                            </div>
+
+                            <!-- 13. Ayarlar -->
+                            <div class="screen" id="screen-ayarlar">
+                                <div class="screenshot-img" style="background-image: url('images/screens/ayarlar.jpg');"></div>
+                            </div>
+
+                            <!-- Sol Menü Ekranı (solnavigasyon.jpg) -->
+                            <div class="screen" id="screen-menu">
+                                <div class="screenshot-img" style="background-image: url('images/screens/solnavigasyon.jpg');"></div>
+                                
+                                <!-- Çekmece Menü Öğeleri (Sol %25.5 Alanı) -->
+                                <button class="hotspot hs-drawer-item hs-drawer-etkinlikler" onclick="changeScreen('screen-etkinlikler')" title="Etkinlikler"></button>
+                                <button class="hotspot hs-drawer-item hs-drawer-firsatlar" onclick="changeScreen('screen-firsatlar')" title="Fırsatlar"></button>
+                                <button class="hotspot hs-drawer-item hs-drawer-dersnotlari" onclick="changeScreen('screen-dersnotalari')" title="Ders Notları"></button>
+                                <button class="hotspot hs-drawer-item hs-drawer-freelance" onclick="changeScreen('screen-freelance')" title="Freelance"></button>
+                                <button class="hotspot hs-drawer-item hs-drawer-isvastaj" onclick="changeScreen('screen-isvastaj')" title="İş ve Staj"></button>
+                                <button class="hotspot hs-drawer-item hs-drawer-mekanlar" onclick="changeScreen('screen-mekanlar')" title="Mekanlar"></button>
+                                <button class="hotspot hs-drawer-item hs-drawer-iletisim" onclick="changeScreen('screen-iletisim')" title="İletişim"></button>
+                                <button class="hotspot hs-drawer-item hs-drawer-ayarlar" onclick="changeScreen('screen-ayarlar')" title="Ayarlar"></button>
+
+                                <!-- Menü Dışı Karartı (Tıklanınca Menüyü Kapatır) -->
+                                <button class="hs-drawer-backdrop" onclick="closeMenu()" title="Kapat"></button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bento Grid Features Section -->
+    <section id="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag"><i data-lucide="sparkles"></i> Neler Sunuyoruz?</span>
+                <h2 class="section-title">Üniversite Yaşamınızı Dönüştürün</h2>
+                <p class="section-subtitle">Ders notlarından etkinliklere, freelance işlerden yapay zekâ desteğine kadar aradığınız her şey parmaklarınızın ucunda.</p>
+            </div>
+            
+            <div class="features-bento">
+                <div class="bento-card large" data-feature-screen="screen-notes">
+                    <div class="bento-top-row">
+                        <div class="bento-icon icon-blue"><i data-lucide="book-open"></i></div>
+                        <span class="bento-tag tag-blue">📚 120+ Ders Notu</span>
+                    </div>
+                    <h3>Ders Notları Ekosistemi</h3>
+                    <p>Fakültenizdeki en güncel ders notlarına saniyeler içinde ulaşın. Arkadaşlarınızın paylaştığı özetler ve çıkmış sorularla vize/final dönemini rahat geçirin.</p>
+                </div>
+                <div class="bento-card" data-feature-screen="screen-arena">
+                    <div class="bento-top-row">
+                        <div class="bento-icon icon-orange"><i data-lucide="flame"></i></div>
+                        <span class="bento-tag tag-orange">🔥 Liderlik Tablosu</span>
+                    </div>
+                    <h3>Arena'da Yarış</h3>
+                    <p>Kampüsün en aktif öğrencileri arasında yerinizi alın, puan toplayıp liderliğe yükselin.</p>
+                </div>
+                <div class="bento-card" data-feature-screen="screen-etkinlikler">
+                    <div class="bento-top-row">
+                        <div class="bento-icon icon-purple"><i data-lucide="users"></i></div>
+                        <span class="bento-tag tag-purple">🎉 10+ Topluluk</span>
+                    </div>
+                    <h3>Kulüp &amp; Etkinlikler</h3>
+                    <p>Kampüsteki hiçbir partiyi, konferansı veya kulüp toplantısını kaçırmayın.</p>
+                </div>
+                <div class="bento-card large" data-feature-screen="screen-home">
+                    <div class="bento-top-row">
+                        <div class="bento-icon icon-emerald"><i data-lucide="messages-square"></i></div>
+                        <span class="bento-tag tag-emerald">💬 Güvenli Mesajlaşma</span>
+                    </div>
+                    <h3>Kesintisiz İletişim</h3>
+                    <p>Bölüm arkadaşlarınızla tartışın, yeni insanlarla tanışın ve kampüs kültürünün bir parçası olun. Güvenli mesajlaşma altyapısı ile her zaman bağlı kalın.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag"><i data-lucide="compass"></i> Misyonumuz</span>
+                <h2 class="section-title">Hakkımızda</h2>
+                <p class="section-subtitle">Şikayet Eden Değil, Yön Veren Tarafız</p>
+            </div>
+            
+            <div class="about-glass">
+                <div class="about-content">
+                    <p><strong>DüConnect</strong>, Düzce Üniversitesi öğrencileri ve mezunları için geliştirilmiş, kampüs yaşamını dijital bir ekosisteme dönüştürmeyi amaçlayan bir mobil platformdur.</p>
+                    <p>Platformun temel amacı; öğrencileri kulüpler, mentörler, etkinlikler ve işletmelerle tek bir ağda buluşturarak sosyal, akademik ve profesyonel hayata nitelikli bir başlangıç yapmalarına yardımcı olmaktır.</p>
+                    
+                    <h3 style="margin-top: 3.5rem; color: var(--text-primary); text-align: center; font-size: 1.8rem; font-weight: 800; margin-bottom: 2rem; letter-spacing: -0.5px;">Sunduğumuz İmkanlar</h3>
+                    <div class="features-list features-bento" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+                        <div class="feature-item bento-card" style="display: flex; flex-direction: column; gap: 14px; align-items: flex-start; padding: 28px;">
+                            <div class="bento-icon" style="margin-bottom: 0;">
+                                <i data-lucide="book-open" style="width: 26px; height: 26px;"></i>
+                            </div>
+                            <div>
+                                <strong style="display: block; color: var(--text-primary); margin-bottom: 8px; font-size: 1.2rem; font-weight: 700;">Ders Notları</strong>
+                                <span style="font-size: 1rem; color: var(--text-secondary); display: block; line-height: 1.6;">Akademik hayata kolay adapte olmanızı ve kaynaklara tek tıkla ulaşmanızı sağlar.</span>
+                            </div>
+                        </div>
+
+                        <div class="feature-item bento-card" style="display: flex; flex-direction: column; gap: 14px; align-items: flex-start; padding: 28px;">
+                            <div class="bento-icon" style="margin-bottom: 0;">
+                                <i data-lucide="users" style="width: 26px; height: 26px;"></i>
+                            </div>
+                            <div>
+                                <strong style="display: block; color: var(--text-primary); margin-bottom: 8px; font-size: 1.2rem; font-weight: 700;">Sosyalleşme</strong>
+                                <span style="font-size: 1rem; color: var(--text-secondary); display: block; line-height: 1.6;">Topluluklar ve etkinliklerle kampüs hayatının önemini ve sosyal çevrenizi keşfedin.</span>
+                            </div>
+                        </div>
+
+                        <div class="feature-item bento-card" style="display: flex; flex-direction: column; gap: 14px; align-items: flex-start; padding: 28px;">
+                            <div class="bento-icon" style="margin-bottom: 0;">
+                                <i data-lucide="briefcase" style="width: 26px; height: 26px;"></i>
+                            </div>
+                            <div>
+                                <strong style="display: block; color: var(--text-primary); margin-bottom: 8px; font-size: 1.2rem; font-weight: 700;">Freelance Çalışma</strong>
+                                <span style="font-size: 1rem; color: var(--text-secondary); display: block; line-height: 1.6;">Öğrencilere özel freelance fırsatlarıyla üniversite okurken gelir oluşturun.</span>
+                            </div>
+                        </div>
+
+                        <div class="feature-item bento-card" style="display: flex; flex-direction: column; gap: 14px; align-items: flex-start; padding: 28px;">
+                            <div class="bento-icon" style="margin-bottom: 0;">
+                                <i data-lucide="sparkles" style="width: 26px; height: 26px;"></i>
+                            </div>
+                            <div>
+                                <strong style="display: block; color: var(--text-primary); margin-bottom: 8px; font-size: 1.2rem; font-weight: 700;">Yapay Zekâ Desteği</strong>
+                                <span style="font-size: 1rem; color: var(--text-secondary); display: block; line-height: 1.6;">Akıllı öneriler ve yapay zekâ asistanı ile en doğru fırsatlara hızla ulaşın.</span>
+                            </div>
+                        </div>
+
+                        <div class="feature-item bento-card" style="display: flex; flex-direction: column; gap: 14px; align-items: flex-start; padding: 28px;">
+                            <div class="bento-icon" style="margin-bottom: 0;">
+                                <i data-lucide="trending-up" style="width: 26px; height: 26px;"></i>
+                            </div>
+                            <div>
+                                <strong style="display: block; color: var(--text-primary); margin-bottom: 8px; font-size: 1.2rem; font-weight: 700;">İş &amp; Staj Hayatı</strong>
+                                <span style="font-size: 1rem; color: var(--text-secondary); display: block; line-height: 1.6;">KOBİ ve mentorluk iş birlikleriyle stajyer veya çalışan olarak kariyerinize başlayın.</span>
+                            </div>
+                        </div>
+
+                        <div class="feature-item bento-card" style="display: flex; flex-direction: column; gap: 14px; align-items: flex-start; padding: 28px;">
+                            <div class="bento-icon" style="margin-bottom: 0;">
+                                <i data-lucide="map-pin" style="width: 26px; height: 26px;"></i>
+                            </div>
+                            <div>
+                                <strong style="display: block; color: var(--text-primary); margin-bottom: 8px; font-size: 1.2rem; font-weight: 700;">Konum &amp; Keşif</strong>
+                                <span style="font-size: 1rem; color: var(--text-secondary); display: block; line-height: 1.6;">Detaylı kampüs ve şehir rehberi ile yeni mekanları ve etkinlik alanlarını keşfedin.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stats Section (Canlı İstatistikler) -->
+                    <div class="stats-section">
+                        <h3 style="color: var(--text-primary); text-align: center; font-size: 1.7rem; font-weight: 700; margin-bottom: 0.5rem;">Rakamlarla DüConnect</h3>
+                        <p style="color: var(--text-secondary); text-align: center; max-width: 500px; margin: 0 auto 1.5rem auto; font-size: 1.05rem;">Birlikte her geçen gün büyüyen güçlü bir kampüs ekosistemi.</p>
+                        
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-icon"><i data-lucide="book-open" style="width: 28px; height: 28px;"></i></div>
+                                <div class="stat-number-wrapper">
+                                    <span class="stat-number" data-target="120">0</span>
+                                    <span class="stat-suffix">+</span>
+                                </div>
+                                <div class="stat-label">Ders Notu</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon"><i data-lucide="users" style="width: 28px; height: 28px;"></i></div>
+                                <div class="stat-number-wrapper">
+                                    <span class="stat-number" data-target="1500">0</span>
+                                    <span class="stat-suffix">+</span>
+                                </div>
+                                <div class="stat-label">Kayıtlı Öğrenci</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon"><i data-lucide="award" style="width: 28px; height: 28px;"></i></div>
+                                <div class="stat-number-wrapper">
+                                    <span class="stat-number" data-target="10">0</span>
+                                    <span class="stat-suffix">+</span>
+                                </div>
+                                <div class="stat-label">Aktif Topluluk</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Arena Winners Section -->
+    <section id="arena">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag"><i data-lucide="award"></i> Liderlik Yarışı</span>
+                <h2 class="section-title">Arena Kazananları</h2>
+                <p class="section-subtitle">DüConnect ekosistemini canlı tutan ve sıralamaya girmeye hak kazananları tebrik ederiz!</p>
+            </div>
+            
+            <div class="arena-card-container">
+                <!-- Championship Highlight Banner -->
+                <div class="arena-championship-card">
+                    <div class="arena-champ-left">
+                        <div class="trophy-glow-badge">🏆</div>
+                        <div class="arena-champ-info">
+                            <span class="arena-champ-tag">🔥 26-Bahar Liderlik Sezonu</span>
+                            <h3>Dönem Şampiyonları Belli Oldu!</h3>
+                            <p>En aktif öğrenciler ve topluluklar büyük ödül havuzundan ödüllerini aldı.</p>
+                        </div>
+                    </div>
+                    <div class="prize-pill">
+                        <span class="prize-label">Toplam Ödül Havuzu</span>
+                        <strong>6.000 TL+ &amp; Hediyeler</strong>
+                    </div>
+                </div>
+
+                <div class="semester-selector">
+                    <button class="semester-btn active" data-semester="26-bahar" onclick="switchSemester('26-bahar')">
+                        <i data-lucide="trophy" style="width: 16px; height: 16px;"></i> 26-Bahar Dönemi
+                    </button>
+                    <button class="semester-btn" data-semester="26-guz" onclick="switchSemester('26-guz')">
+                        <i data-lucide="flame" style="width: 16px; height: 16px;"></i> 26-Güz Dönemi
+                    </button>
+                </div>
+
+                <div class="category-toggle">
+                    <button class="category-btn active" data-category="ogrenci" onclick="switchCategory('ogrenci')">
+                        <i data-lucide="user" style="width: 16px; height: 16px;"></i> Öğrenci
+                    </button>
+                    <button class="category-btn" data-category="topluluk" onclick="switchCategory('topluluk')">
+                        <i data-lucide="users" style="width: 16px; height: 16px;"></i> Topluluk
+                    </button>
+                </div>
+
+                <!-- Dynamic Image Gallery Container -->
+                <div id="arena-gallery" class="arena-gallery">
+                    <div class="poster-card-fancy" onclick="openArenaLightbox('images/arena/ogrenci.jpg')" title="Büyütmek için tıklayın">
+                        <div class="poster-header">
+                            <span class="poster-chip">🥇 Şampiyonlar Kürsüsü (İlk 3)</span>
+                            <span class="poster-zoom-hint">🔍 İncele</span>
+                        </div>
+                        <div class="poster-img-container">
+                            <img src="images/arena/ogrenci.jpg" alt="🥇 Şampiyonlar Kürsüsü (İlk 3)" class="gallery-img">
+                        </div>
+                    </div>
+                    <div class="poster-card-fancy" onclick="openArenaLightbox('images/arena/ogrenci-pro.jpg')" title="Büyütmek için tıklayın">
+                        <div class="poster-header">
+                            <span class="poster-chip">⭐ DüConnect Pro Üyelik Kazananlar</span>
+                            <span class="poster-zoom-hint">🔍 İncele</span>
+                        </div>
+                        <div class="poster-img-container">
+                            <img src="images/arena/ogrenci-pro.jpg" alt="⭐ DüConnect Pro Üyelik Kazananlar" class="gallery-img">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Arena How It Works -->
+                <div class="arena-how-it-works">
+                    <h4 class="how-title"><i data-lucide="zap" style="color: #f59e0b;"></i> Arena'da Nasıl Sıralamaya Girerim?</h4>
+                    <div class="arena-steps-grid">
+                        <div class="arena-step-card">
+                            <div class="step-num">1</div>
+                            <div class="step-body">
+                                <strong>Not Paylaş &amp; İletişim Kur</strong>
+                                <span>Ders notu yükleyerek ve gönderi paylaşarak anında puan topla.</span>
+                            </div>
+                        </div>
+                        <div class="arena-step-card">
+                            <div class="step-num">2</div>
+                            <div class="step-body">
+                                <strong>Serini Koru (Streak)</strong>
+                                <span>Düzenli aktif kalarak 5., 10. ve 15. gün streak bonuslarını kap.</span>
+                            </div>
+                        </div>
+                        <div class="arena-step-card">
+                            <div class="step-num">3</div>
+                            <div class="step-body">
+                                <strong>Ödülleri Kazan</strong>
+                                <span>Dönem sonunda ilk sıralarda yer al, nakit ve hediyeleri kazan!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sponsors Section inside Arena Frame -->
+                <div class="arena-sponsors-section">
+                    <div class="section-header" id="arena-sponsors-header" style="margin-top: 40px; margin-bottom: 24px;">
+                        <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.65rem; font-weight: 800; color: var(--text-primary);">Ödül Sponsorlarımız</h3>
+                    </div>
+                    
+                    <div id="arena-sponsors-gallery" class="arena-gallery sponsors-gallery">
+                        <div class="gallery-image-wrapper sponsor-img-wrapper" onclick="openArenaLightbox('images/arena/sponsor-1.jpg')" title="Büyütmek için tıklayın">
+                            <img src="images/arena/sponsor-1.jpg" alt="Serbay Interactive" class="gallery-img">
+                        </div>
+                        <div class="gallery-image-wrapper sponsor-img-wrapper" onclick="openArenaLightbox('images/arena/sponsor-2.jpg')" title="Büyütmek için tıklayın">
+                            <img src="images/arena/sponsor-2.jpg" alt="Ödül Sponsorumuz" class="gallery-img">
+                        </div>
+                        <div class="gallery-image-wrapper sponsor-img-wrapper" onclick="openArenaLightbox('images/arena/sponsor-3.jpg')" title="Büyütmek için tıklayın">
+                            <img src="images/arena/sponsor-3.jpg" alt="Ödül Sponsorumuz" class="gallery-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag"><i data-lucide="users"></i> Bizi Tanıyın</span>
+                <h2 class="section-title">Ekibimizle Tanışın</h2>
+                <p class="section-subtitle">DüConnect'i her gün geliştiren, kampüsün enerjisini taşıyan dinamik kadromuz.</p>
+            </div>
+            
+            <div class="marquee-container">
+                <div class="marquee-content">
+                    <div class="marquee-card">
+                        <div class="marquee-card-image-wrapper">
+                            <img src="images/member-1.jpg" alt="Yusuf Enes Kuzu">
+                            <div class="marquee-card-overlay">
+                                <h3>Yusuf Enes Kuzu</h3>
+                                <p>Proje Lideri ve Fikir Sahibi</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="marquee-card">
+                        <div class="marquee-card-image-wrapper">
+                            <img src="images/member-2.jpg" alt="Hüseyin Kaplan">
+                            <div class="marquee-card-overlay">
+                                <h3>Hüseyin Kaplan</h3>
+                                <p>Proje Lider Yardımcısı</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="marquee-card">
+                        <div class="marquee-card-image-wrapper">
+                            <img src="images/member-3.jpg" alt="Mete Alp Arslan">
+                            <div class="marquee-card-overlay">
+                                <h3>Mete Alp Arslan</h3>
+                                <p>Backend Yazılım Geliştirme</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="marquee-card">
+                        <div class="marquee-card-image-wrapper">
+                            <img src="images/member-4.jpg" alt="Emre Karabey">
+                            <div class="marquee-card-overlay">
+                                <h3>Emre Karabey</h3>
+                                <p>Backend Yazılım Geliştirme</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="marquee-card">
+                        <div class="marquee-card-image-wrapper">
+                            <img src="images/member-5.jpg" alt="Kaan Gül">
+                            <div class="marquee-card-overlay">
+                                <h3>Kaan Gül</h3>
+                                <p>Halkla İlişkiler ve Proje Geliştirme</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="marquee-card">
+                        <div class="marquee-card-image-wrapper">
+                            <img src="images/member-6.jpg" alt="Ömer Faruk Özçelik">
+                            <div class="marquee-card-overlay">
+                                <h3>Ömer Faruk Özçelik</h3>
+                                <p>Halkla İlişkiler ve Proje Geliştirme</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="marquee-card">
+                        <div class="marquee-card-image-wrapper">
+                            <img src="images/member-7.jpg" alt="Sena Nur Uyanık">
+                            <div class="marquee-card-overlay">
+                                <h3>Sena Nur Uyanık</h3>
+                                <p>Halkla İlişkiler ve Sosyal Medya</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="marquee-card">
+                        <div class="marquee-card-image-wrapper">
+                            <img src="images/member-8.jpg" alt="Nihan Azra Aydınalp">
+                            <div class="marquee-card-overlay">
+                                <h3>Nihan Azra Aydınalp</h3>
+                                <p>Halkla İlişkiler ve Sosyal Medya</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="marquee-card">
+                        <div class="marquee-card-image-wrapper">
+                            <img src="images/member-9.jpg" alt="Nisanur Yumşak">
+                            <div class="marquee-card-overlay">
+                                <h3>Nisanur Yumşak</h3>
+                                <p>Sosyal Medya ve Tasarım</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Duplicate for seamless scroll -->
+                <div class="marquee-content" aria-hidden="true">
+                    <div class="marquee-card">
+                        <div class="marquee-card-image-wrapper">
+                            <img src="images/member-1.jpg" alt="Yusuf Enes Kuzu">
+                            <div class="marquee-card-overlay">
+                                <h3>Yusuf Enes Kuzu</h3>
+                                <p>Proje Lideri ve Fikir Sahibi</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="marquee-card">
+                        <div class="marquee-card-image-wrapper">
+                            <img src="images/member-2.jpg" alt="Hüseyin Kaplan">
+                            <div class="marquee-card-overlay">
+                                <h3>Hüseyin Kaplan</h3>
+                                <p>Proje Lider Yardımcısı</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="marquee-card">
+                        <div class="marquee-card-image-wrapper">
+                            <img src="images/member-3.jpg" alt="Mete Alp Arslan">
+                            <div class="marquee-card-overlay">
+                                <h3>Mete Alp Arslan</h3>
+                                <p>Backend Yazılım Geliştirme</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="marquee-card">
+                        <div class="marquee-card-image-wrapper">
+                            <img src="images/member-4.jpg" alt="Emre Karabey">
+                            <div class="marquee-card-overlay">
+                                <h3>Emre Karabey</h3>
+                                <p>Backend Yazılım Geliştirme</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="marquee-card">
+                        <div class="marquee-card-image-wrapper">
+                            <img src="images/member-5.jpg" alt="Kaan Gül">
+                            <div class="marquee-card-overlay">
+                                <h3>Kaan Gül</h3>
+                                <p>Halkla İlişkiler ve Proje Geliştirme</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="marquee-card">
+                        <div class="marquee-card-image-wrapper">
+                            <img src="images/member-6.jpg" alt="Ömer Faruk Özçelik">
+                            <div class="marquee-card-overlay">
+                                <h3>Ömer Faruk Özçelik</h3>
+                                <p>Halkla İlişkiler ve Proje Geliştirme</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="marquee-card">
+                        <div class="marquee-card-image-wrapper">
+                            <img src="images/member-7.jpg" alt="Sena Nur Uyanık">
+                            <div class="marquee-card-overlay">
+                                <h3>Sena Nur Uyanık</h3>
+                                <p>Halkla İlişkiler ve Sosyal Medya</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="marquee-card">
+                        <div class="marquee-card-image-wrapper">
+                            <img src="images/member-8.jpg" alt="Nihan Azra Aydınalp">
+                            <div class="marquee-card-overlay">
+                                <h3>Nihan Azra Aydınalp</h3>
+                                <p>Halkla İlişkiler ve Sosyal Medya</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="marquee-card">
+                        <div class="marquee-card-image-wrapper">
+                            <img src="images/member-9.jpg" alt="Nisanur Yumşak">
+                            <div class="marquee-card-overlay">
+                                <h3>Nisanur Yumşak</h3>
+                                <p>Sosyal Medya ve Tasarım</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Section -->
+    <section id="instagram">
+        <div class="container">
+            <div class="section-header-split">
+                <div class="section-header-left">
+                    <span class="section-tag"><i data-lucide="instagram"></i> Sosyal Medya</span>
+                    <h2 class="section-title">Bizden Haberler</h2>
+                    <p class="section-subtitle">Kampüsten en güncel kareler, duyurular ve eğlenceli anlar.</p>
+                </div>
+                <div class="section-header-right">
+                    <a href="https://instagram.com/duconnectresmi" target="_blank" class="ig-profile-pill">
+                        <div class="ig-profile-icon">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                        </div>
+                        <div class="ig-profile-info">
+                            <span class="ig-handle">@duconnectresmi</span>
+                            <span class="ig-action">Instagram'da Gör &rarr;</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Dynamic Custom Instagram Grid (Pre-rendered for Instant 0ms Load) -->
+            <div id="instagram-feed-grid" class="instagram-custom-grid">
+                <a href="https://www.instagram.com/p/DcLaiytNojo/" target="_blank" rel="noopener noreferrer" class="ig-card">
+                    <div class="ig-card-media">
+                        <img src="images/instagram/post-1.jpg" alt="DuConnect Instagram Gönderisi" decoding="async">
+                        <div class="ig-card-overlay">
+                            <div class="ig-card-stats">
+                                <div class="ig-stat-item">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                                    <span>23</span>
+                                </div>
+                                <div class="ig-stat-item">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                    <span>2</span>
+                                </div>
+                            </div>
+                            <div class="ig-card-caption">✨ Tercih sonuçları açıklandı! Düzce Üniversitesi’ni tercih eden tüm öğrencilerimize hoş geldiniz! 🎓💙</div>
+                        </div>
+                    </div>
+                    <div class="ig-card-footer">
+                        <div class="ig-card-footer-user">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--primary-color)" stroke-width="2"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                            <span>@duconnectresmi</span>
+                        </div>
+                        <div class="ig-card-footer-btn">İncele &rarr;</div>
+                    </div>
+                </a>
+
+                <a href="https://www.instagram.com/p/DcJWsekuhWY/" target="_blank" rel="noopener noreferrer" class="ig-card">
+                    <div class="ig-card-media">
+                        <img src="images/instagram/post-2.jpg" alt="DuConnect Instagram Gönderisi" decoding="async">
+                        <div class="ig-card-overlay">
+                            <div class="ig-card-stats">
+                                <div class="ig-stat-item">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                                    <span>29</span>
+                                </div>
+                                <div class="ig-stat-item">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                    <span>2</span>
+                                </div>
+                            </div>
+                            <div class="ig-card-caption">Yaz Okulu Final Sınavları Başlıyor! 📚 Sınav sürecinde ders notlarına DüConnect üzerinden ulaşabilirsiniz.</div>
+                        </div>
+                    </div>
+                    <div class="ig-card-footer">
+                        <div class="ig-card-footer-user">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--primary-color)" stroke-width="2"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                            <span>@duconnectresmi</span>
+                        </div>
+                        <div class="ig-card-footer-btn">İncele &rarr;</div>
+                    </div>
+                </a>
+
+                <a href="https://www.instagram.com/p/Db1IVbpl2re/" target="_blank" rel="noopener noreferrer" class="ig-card">
+                    <div class="ig-card-media">
+                        <img src="images/instagram/post-3.jpg" alt="DuConnect Instagram Gönderisi" decoding="async">
+                        <div class="ig-card-badge"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect width="16" height="16" x="6" y="2" rx="2"/><path d="M2 6v14a2 2 0 0 0 2 2h14"/></svg> Çoklu</div>
+                        <div class="ig-card-overlay">
+                            <div class="ig-card-stats">
+                                <div class="ig-stat-item">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                                    <span>49</span>
+                                </div>
+                                <div class="ig-stat-item">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                    <span>2</span>
+                                </div>
+                            </div>
+                            <div class="ig-card-caption">Ağ kuruldu. 🕷️ 1000+ öğrenci. Kampüsün farklı noktaları, farklı hikâyeleri aynı yerde buluşuyor.</div>
+                        </div>
+                    </div>
+                    <div class="ig-card-footer">
+                        <div class="ig-card-footer-user">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--primary-color)" stroke-width="2"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                            <span>@duconnectresmi</span>
+                        </div>
+                        <div class="ig-card-footer-btn">İncele &rarr;</div>
+                    </div>
+                </a>
+
+                <a href="https://www.instagram.com/p/Dbv5D4vF22W/" target="_blank" rel="noopener noreferrer" class="ig-card">
+                    <div class="ig-card-media">
+                        <img src="images/instagram/post-4.jpg" alt="DuConnect Instagram Gönderisi" decoding="async">
+                        <div class="ig-card-badge"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect width="16" height="16" x="6" y="2" rx="2"/><path d="M2 6v14a2 2 0 0 0 2 2h14"/></svg> Çoklu</div>
+                        <div class="ig-card-overlay">
+                            <div class="ig-card-stats">
+                                <div class="ig-stat-item">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                                    <span>39</span>
+                                </div>
+                                <div class="ig-stat-item">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                    <span>4</span>
+                                </div>
+                            </div>
+                            <div class="ig-card-caption">📚 "Önce vs Sonra" serimizde DüConnect'in kampüs karmaşasını nasıl pratikleştirdiğini özetledik. 🚀</div>
+                        </div>
+                    </div>
+                    <div class="ig-card-footer">
+                        <div class="ig-card-footer-user">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--primary-color)" stroke-width="2"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                            <span>@duconnectresmi</span>
+                        </div>
+                        <div class="ig-card-footer-btn">İncele &rarr;</div>
+                    </div>
+                </a>
+
+                <a href="https://www.instagram.com/p/DbQ8YO8F4j2/" target="_blank" rel="noopener noreferrer" class="ig-card">
+                    <div class="ig-card-media">
+                        <img src="images/instagram/post-5.jpg" alt="DuConnect Instagram Gönderisi" decoding="async">
+                        <div class="ig-card-badge"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect width="16" height="16" x="6" y="2" rx="2"/><path d="M2 6v14a2 2 0 0 0 2 2h14"/></svg> Çoklu</div>
+                        <div class="ig-card-overlay">
+                            <div class="ig-card-stats">
+                                <div class="ig-stat-item">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                                    <span>29</span>
+                                </div>
+                                <div class="ig-stat-item">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                    <span>3</span>
+                                </div>
+                            </div>
+                            <div class="ig-card-caption">📚 Yaz okulu vize haftası başladı! Sınavlara girecek tüm öğrenci arkadaşlarımıza başarılar dileriz. 💙</div>
+                        </div>
+                    </div>
+                    <div class="ig-card-footer">
+                        <div class="ig-card-footer-user">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--primary-color)" stroke-width="2"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                            <span>@duconnectresmi</span>
+                        </div>
+                        <div class="ig-card-footer-btn">İncele &rarr;</div>
+                    </div>
+                </a>
+
+                <a href="https://www.instagram.com/p/DbLWe3lFyC5/" target="_blank" rel="noopener noreferrer" class="ig-card">
+                    <div class="ig-card-media">
+                        <img src="images/instagram/post-6.jpg" alt="DuConnect Instagram Gönderisi" decoding="async">
+                        <div class="ig-card-badge"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect width="16" height="16" x="6" y="2" rx="2"/><path d="M2 6v14a2 2 0 0 0 2 2h14"/></svg> Çoklu</div>
+                        <div class="ig-card-overlay">
+                            <div class="ig-card-stats">
+                                <div class="ig-stat-item">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                                    <span>35</span>
+                                </div>
+                                <div class="ig-stat-item">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                    <span>3</span>
+                                </div>
+                            </div>
+                            <div class="ig-card-caption">🎓 Geleceğine yön verecek tercih için doğru adımı at! Düzce Üniversitesi olanakları DüConnect'te. 💙</div>
+                        </div>
+                    </div>
+                    <div class="ig-card-footer">
+                        <div class="ig-card-footer-user">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--primary-color)" stroke-width="2"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                            <span>@duconnectresmi</span>
+                        </div>
+                        <div class="ig-card-footer-btn">İncele &rarr;</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ / SSS Section -->
+    <section id="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag"><i data-lucide="help-circle"></i> Merak Edilenler</span>
+                <h2 class="section-title">Sıkça Sorulan Sorular</h2>
+                <p class="section-subtitle">DüConnect ve Arena sistemi hakkında en çok merak edilen soruların yanıtları.</p>
+            </div>
+
+            <div class="faq-container">
+                <!-- FAQ Item 1: Arena Puan Sistemi -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>🏆 Arena'da nasıl puan kazanırım ve kurallar nelerdir?</span>
+                        <div class="faq-icon"><i data-lucide="chevron-down"></i></div>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Arena sisteminde aktif kalarak puan toplayabilir, liderlik tablosunda üst sıralara tırmanarak dönem sonu büyük ödüllerin sahibi olabilirsiniz. Puan kazanım tablosu şu şekildedir:</p>
+                            
+                            <div class="points-breakdown">
+                                <div class="point-row">
+                                    <div class="point-info">
+                                        <div class="point-badge-icon">📖</div>
+                                        <div class="point-text">
+                                            <strong>Ders Notu Paylaşımı</strong>
+                                            <span>Sadece Öğrenciler</span>
+                                        </div>
+                                    </div>
+                                    <div class="point-value">+20 Puan</div>
+                                </div>
+
+                                <div class="point-row">
+                                    <div class="point-info">
+                                        <div class="point-badge-icon">📝</div>
+                                        <div class="point-text">
+                                            <strong>Gönderi (Post) Paylaşımı</strong>
+                                            <span>Herkes</span>
+                                        </div>
+                                    </div>
+                                    <div class="point-value">+10 Puan</div>
+                                </div>
+
+                                <div class="point-row">
+                                    <div class="point-info">
+                                        <div class="point-badge-icon">🔥</div>
+                                        <div class="point-text">
+                                            <strong>Streak Bonusu</strong>
+                                            <span>5. ve 10. günler</span>
+                                        </div>
+                                    </div>
+                                    <div class="point-value">+10 / +20 Puan</div>
+                                </div>
+
+                                <div class="point-row">
+                                    <div class="point-info">
+                                        <div class="point-badge-icon">🏅</div>
+                                        <div class="point-text">
+                                            <strong>Büyük Final</strong>
+                                            <span>15. günde döngü biter</span>
+                                        </div>
+                                    </div>
+                                    <div class="point-value">+30 Puan</div>
+                                </div>
+
+                                <div class="point-row">
+                                    <div class="point-info">
+                                        <div class="point-badge-icon">💙</div>
+                                        <div class="point-text">
+                                            <strong>Topluluk Etkileşimi</strong>
+                                            <span>Beğeni / İlk Yorum</span>
+                                        </div>
+                                    </div>
+                                    <div class="point-value">+2 / +4 Puan</div>
+                                </div>
+
+                                <div class="points-alert">
+                                    <i data-lucide="alert-triangle" style="width: 20px; height: 20px; flex-shrink: 0;"></i>
+                                    <span>Günlük kazanım limiti 50 puandır. Streak bonusları bu limite takılmaz!</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2: DüConnect Nedir -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>🎓 DüConnect nedir ve kimler kullanabilir?</span>
+                        <div class="faq-icon"><i data-lucide="chevron-down"></i></div>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>DüConnect; Düzce Üniversitesi öğrencileri, mezunları, öğrenci toplulukları ve mentörleri tek bir çatı altında toplayan yeni nesil dijital kampüs platformudur. Üniversiteye bağlı herkes ücretsiz kayıt olup ekosisteme katılabilir.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3: Ders Notları -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>📚 Ders notlarına nasıl erişebilirim?</span>
+                        <div class="faq-icon"><i data-lucide="chevron-down"></i></div>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Uygulama içerisindeki "Ders Notları" menüsünden kendi fakültenizi ve bölümünüzü filtreleyerek arkadaşlarınızın paylaştığı vize/final özetlerine, ders slaytlarına ve çıkmış sorulara anında ulaşabilirsiniz.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4: Topluluklar -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>👥 Topluluğumuzu DüConnect'e nasıl ekleyebiliriz?</span>
+                        <div class="faq-icon"><i data-lucide="chevron-down"></i></div>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Topluluk başkanları veya temsilcileri, iletişim formumuzdan veya doğrudan yönetim ekibimizle iletişime geçerek topluluk profilini onaylatabilir ve etkinliklerini tüm kampüse duyurmaya başlayabilir.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download">
+        <div class="container">
+            <div class="download-section-split">
+                <div class="download-left">
+                    <div class="badge-white">
+                        <i data-lucide="sparkles" style="width: 15px; height: 15px;"></i>
+                        Hemen Ücretsiz İndirin
+                    </div>
+                    <h2>DüConnect'i Şimdi İndirin</h2>
+                    <p>Kampüs cebinizde. iOS veya Android cihazınıza hemen indirin, 1.500'den fazla Düzce Üniversitesi öğrencisinin arasına katılın.</p>
+                    
+                    <div class="download-checklist">
+                        <div class="check-item"><i data-lucide="check-circle-2"></i> %100 Ücretsiz &amp; Güvenli</div>
+                        <div class="check-item"><i data-lucide="check-circle-2"></i> Tüm Fakülte &amp; Bölümlerle Uyumlu</div>
+                        <div class="check-item"><i data-lucide="check-circle-2"></i> Anlık Bildirimler &amp; Etkinlikler</div>
+                    </div>
+
+                    <div class="app-buttons">
+                        <a href="https://apps.apple.com/tr/app/d%C3%BCconnect/id6759285150" target="_blank" rel="noopener noreferrer" class="app-btn">
+                            <!-- App Store Logo SVG -->
+                            <svg viewBox="0 0 800 800" width="22" height="22" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M396.6,183.8l16.2-28c10-17.5,32.3-23.4,49.8-13.4s23.4,32.3,13.4,49.8L319.9,462.4h112.9 c36.6,0,57.1,43,41.2,72.8H143c-20.2,0-36.4-16.2-36.4-36.4c0-20.2,16.2-36.4,36.4-36.4h92.8l118.8-205.9l-37.1-64.4 c-10-17.5-4.1-39.6,13.4-49.8c17.5-10,39.6-4.1,49.8,13.4L396.6,183.8L396.6,183.8z M256.2,572.7l-35,60.7 c-10,17.5-32.3,23.4-49.8,13.4S148,614.5,158,597l26-45C213.4,542.9,237.3,549.9,256.2,572.7L256.2,572.7z M557.6,462.6h94.7 c20.2,0,36.4,16.2,36.4,36.4c0,20.2-16.2,36.4-36.4,36.4h-52.6l35.5,61.6c10,17.5,4.1,39.6-13.4,49.8c-17.5,10-39.6,4.1-49.8-13.4 c-59.8-103.7-104.7-181.3-134.5-233c-30.5-52.6-8.7-105.4,12.8-123.3C474.2,318.1,509.9,380,557.6,462.6L557.6,462.6z"/></svg>
+                            App Store'dan İndir
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.yusufenesksapplication.app" target="_blank" rel="noopener noreferrer" class="app-btn">
+                            <!-- Google Play Logo SVG -->
+                            <svg viewBox="0 0 512 512" width="20" height="20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
+                            Google Play'den İndir
+                        </a>
+                    </div>
+                </div>
+
+                <div class="download-right">
+                    <div class="qr-card">
+                        <div class="qr-code-box">
+                            <img src="images/qr-code.png" alt="DüConnect İndir QR Kod" class="qr-matrix-img" decoding="async">
+                            <img src="images/logo.png" alt="DüConnect Logo" class="qr-logo-overlay" decoding="async">
+                        </div>
+                        <p class="qr-instruction">
+                            <i data-lucide="camera" style="width: 16px; height: 16px;"></i>
+                            Kameranla Tara, Anında Yükle
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag"><i data-lucide="mail"></i> İletişim</span>
+                <h2 class="section-title">Bize Ulaşın</h2>
+                <p class="section-subtitle">Soru sormak, öneride bulunmak veya iş birliği için aşağıdaki formu kullanabilirsiniz.</p>
+            </div>
+            
+            <div class="contact-wrapper">
+                
+                <div class="contact-info">
+                    <div class="info-item">
+                        <div class="info-icon"><i data-lucide="mail"></i></div>
+                        <div>
+                            <h4>E-Posta</h4>
+                            <a href="mailto:duconnectresmi@gmail.com">duconnectresmi@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon"><i data-lucide="map-pin"></i></div>
+                        <div>
+                            <h4>Adres</h4>
+                            <p>Düzce Merkez, Türkiye</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                        </div>
+                        <div>
+                            <h4>Instagram</h4>
+                            <a href="https://instagram.com/duconnectresmi" target="_blank" rel="noopener noreferrer">@duconnectresmi</a>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                        </div>
+                        <div>
+                            <h4>LinkedIn</h4>
+                            <a href="https://linkedin.com/company/duconnectresmi" target="_blank" rel="noopener noreferrer">DüConnect</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-container">
+                    <form class="contact-form" action="https://formsubmit.co/duconnectresmi@gmail.com" method="POST">
+                        <input type="hidden" name="_subject" value="DüConnect Yeni Form Gönderisi!">
+                        <input type="hidden" name="_template" value="table">
+                        <!-- Anti-spam Honeypot Field -->
+                        <input type="text" name="_honey" style="display:none">
+                        <!-- Disable Captcha for frictionless user experience -->
+                        <input type="hidden" name="_captcha" value="false">
+                        
+                        <div class="form-group">
+                            <label for="name">Adınız Soyadınız</label>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Ad Soyad" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-Posta Adresiniz</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="ornek@mail.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Konu</label>
+                            <select id="subject" name="Konu" class="form-control" required>
+                                <option value="Sponsorluk Görüşmesi">Sponsorluk Görüşmesi</option>
+                                <option value="Genel İletişim / Bilgi Alma">Genel İletişim / Bilgi Alma</option>
+                                <option value="Hata / Geri Bildirim">Hata / Geri Bildirim Bildirimi</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mesajınız</label>
+                            <textarea id="message" name="Mesajınız?" class="form-control" rows="4" placeholder="Mesajınızı, önerinizi veya sorunuzu buraya yazabilirsiniz..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-submit">Mesajı Gönder</button>
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer with Legal Links -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">DüConnect</div>
+                <div class="footer-links">
+                    <a href="gizlilik.html">Gizlilik Sözleşmesi</a>
+                    <a href="kvkk.html">KVKK Aydınlatma Metni</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 DüConnect. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Back to Top Button -->
+    <button id="backToTop" class="back-to-top" onclick="scrollToTop()" title="Yukarı Çık">
+        <i data-lucide="arrow-up" style="width: 20px; height: 20px;"></i>
+    </button>
+
+    <script src="script.js"></script>
+    <script>
+      lucide.createIcons();
+    </script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KVKK Aydınlatma Metni - DüConnect</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .legal-page { 
+            padding-top: 160px; 
+            padding-bottom: 100px; 
+            min-height: 100vh;
+        }
+        .legal-content {
+            background: var(--surface-card);
+            backdrop-filter: blur(24px); 
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: 36px;
+            padding: 56px 48px;
+            box-shadow: var(--glass-shadow);
+            max-width: 960px;
+            margin: 0 auto;
+        }
+        .back-link { 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 8px; 
+            color: var(--primary-color); 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 0.95rem;
+            margin-bottom: 30px; 
+            transition: transform 0.2s ease;
+        }
+        .back-link:hover {
+            transform: translateX(-4px);
+        }
+        .legal-content h1 { 
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.4rem; 
+            margin-bottom: 24px; 
+            font-weight: 800; 
+            color: var(--text-primary); 
+            letter-spacing: -1px;
+            line-height: 1.25;
+        }
+        .legal-section {
+            margin-bottom: 28px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+        }
+        .legal-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .legal-section h2 { 
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem; 
+            margin-top: 0; 
+            margin-bottom: 12px; 
+            color: var(--text-primary); 
+            font-weight: 800;
+            letter-spacing: -0.3px;
+        }
+        .legal-content p, .legal-content li { 
+            color: var(--text-secondary); 
+            font-size: 1.05rem; 
+            line-height: 1.75; 
+            margin-bottom: 12px; 
+        }
+        .legal-content ul, .legal-content ol { 
+            padding-left: 24px; 
+            margin-bottom: 16px; 
+        }
+        .legal-content ul li, .legal-content ol li {
+            margin-bottom: 6px;
+        }
+        @media (max-width: 768px) {
+            .legal-page { padding-top: 130px; }
+            .legal-content { padding: 36px 24px; border-radius: 24px; }
+            .legal-content h1 { font-size: 1.85rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Mesh Background -->
+    <div class="mesh-bg">
+        <div class="mesh-blob mesh-1"></div>
+        <div class="mesh-blob mesh-2"></div>
+        <div class="mesh-blob mesh-3"></div>
+    </div>
+
+    <!-- Premium Glass Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-image-wrapper">
+                    <img src="images/logo.png" alt="DüConnect Logo" class="logo-img">
+                </div>
+                <div class="logo-text-wrapper">
+                    <span class="logo-title">DüConnect</span>
+                </div>
+            </a>
+            
+            <!-- Mobile Menu Toggle Button -->
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i data-lucide="menu"></i>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html#home">Anasayfa</a></li>
+                <li><a href="index.html#features">Özellikler</a></li>
+                <li><a href="index.html#about">Hakkımızda</a></li>
+                <li><a href="index.html#arena">Arena</a></li>
+                <li><a href="index.html#team">Ekibimiz</a></li>
+                <li><a href="index.html#instagram">Haberler</a></li>
+                <li><a href="index.html#faq">SSS</a></li>
+                <li><a href="index.html#contact">İletişim</a></li>
+            </ul>
+            <a href="index.html#download" class="btn btn-primary nav-download-btn">Uygulamayı İndir</a>
+        </div>
+    </nav>
+
+    <!-- Legal Content Section -->
+    <section class="legal-page">
+        <div class="container">
+            <div class="legal-content">
+                <a href="index.html" class="back-link"><i data-lucide="arrow-left" style="width: 18px; height: 18px;"></i> Ana Sayfaya Dön</a>
+                
+                <h1>DüConnect Mobil Uygulaması KVKK Aydınlatma Metni</h1>
+                
+                <div class="legal-section">
+                    <h2>1. GİRİŞ</h2>
+                    <p>İşbu Aydınlatma Metni, 6698 sayılı Kişisel Verilerin Korunması Kanunu’nun (“Kanun”) 10. maddesi uyarınca, veri sorumlusu sıfatıyla hareket eden DüConnect Mobil Uygulaması (“Veri Sorumlusu”) tarafından kişisel verilerin işlenmesine ilişkin kullanıcıların aydınlatılması amacıyla hazırlanmıştır.</p>
+                    <p>Veri Sorumlusu olarak kişisel verilerin korunması, işlenmesi ve güvenliği hususunda azami hassasiyet göstermekteyiz. Bu kapsamda, kişisel verileriniz Kanun ve ilgili mevzuata uygun şekilde işlenmektedir.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>2. KİŞİSEL VERİLERİN İŞLENME AMAÇLARI</h2>
+                    <p>Toplanan kişisel verileriniz Kanun’un 5. ve 6. maddelerinde belirtilen şartlar çerçevesinde aşağıdaki amaçlarla işlenmektedir:</p>
+                    <ul>
+                        <li>Kullanıcı kayıt işlemlerinin gerçekleştirilmesi,</li>
+                        <li>Müşteri desteği hizmetlerinin sunulması,</li>
+                        <li>Güvenlik ve dolandırıcılık önleme faaliyetleri,</li>
+                        <li>Pazarlama, kampanya ve bilgilendirme faaliyetleri,</li>
+                        <li>Kullanıcı deneyiminin geliştirilmesi ve analiz çalışmaları,</li>
+                        <li>Yasal yükümlülüklerin yerine getirilmesi.</li>
+                    </ul>
+                </div>
+
+                <div class="legal-section">
+                    <h2>3. İŞLENEN KİŞİSEL VERİLER</h2>
+                    <ul>
+                        <li>Ad-soyad,</li>
+                        <li>E-posta adresi,</li>
+                        <li>Telefon numarası,</li>
+                        <li>Adres bilgisi,</li>
+                        <li>IP adresi, cihaz bilgileri, çerez verileri,</li>
+                        <li>Konum bilgisi (mobil izinler kapsamında),</li>
+                        <li>Kullanıcı tarafından uygulama üzerinde paylaşılan gönderiler ve fotoğraflar.</li>
+                    </ul>
+                </div>
+
+                <div class="legal-section">
+                    <h2>4. KİŞİSEL VERİLERİN PAYLAŞILMASI VE AKTARILMASI</h2>
+                    <p>Kişisel verileriniz, Kanun’un 8. ve 9. maddeleri kapsamında aşağıdaki taraflarla paylaşılabilmektedir:</p>
+                    <ul>
+                        <li>Ödeme sağlayıcılar,</li>
+                        <li>İş ortakları ve hizmet sağlayıcılar,</li>
+                        <li>Reklam sağlayıcılar,</li>
+                        <li>Yasal olarak yetkili kurum ve kuruluşlar.</li>
+                    </ul>
+                    <p>Verileriniz paylaşılırken gerekli teknik ve idari tedbirler alınmaktadır.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>5. KİŞİSEL VERİ TOPLAMA YÖNTEMİ VE HUKUKİ SEBEP</h2>
+                    <p>Kişisel verileriniz; üyelik kaydı, uygulama kullanımı, mobil izinler, çerezler, elektronik iletişim kanalları gibi yollarla elde edilmekte olup;</p>
+                    <ul>
+                        <li>Sözleşmenin kurulması veya ifası,</li>
+                        <li>Hukuki yükümlülüklerin yerine getirilmesi,</li>
+                        <li>Meşru menfaatlerin korunması,</li>
+                        <li>Açık rıza alınması (pazarlama ve kampanya faaliyetleri gibi durumlarda) hukuki sebeplerine dayanılarak işlenmektedir.</li>
+                    </ul>
+                </div>
+
+                <div class="legal-section">
+                    <h2>6. KİŞİSEL VERİLERİN SAKLAMA SÜRESİ</h2>
+                    <p>Kişisel verileriniz, yasal saklama süreleri boyunca muhafaza edilmekte olup; hesap silme talebinizden sonra en fazla 2 yıl içerisinde imha edilmektedir.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>7. KULLANICI HAKLARI</h2>
+                    <p>Kanun’un 11. maddesi uyarınca kişisel veri sahipleri olarak aşağıdaki haklara sahipsiniz:</p>
+                    <ol>
+                        <li>Kişisel veri işlenip işlenmediğini öğrenme,</li>
+                        <li>Kişisel verileri işlenmişse buna ilişkin bilgi talep etme,</li>
+                        <li>Kişisel verilerin işlenme amacını ve amacına uygun kullanılıp kullanılmadığını öğrenme,</li>
+                        <li>Yurt içinde veya yurt dışında kişisel verilerin aktarıldığı üçüncü kişileri bilme,</li>
+                        <li>Kişisel verilerin eksik veya yanlış işlenmiş olması halinde bunların düzeltilmesini isteme,</li>
+                        <li>Kanun’un 7. maddesi çerçevesinde kişisel verilerin silinmesini veya yok edilmesini isteme,</li>
+                        <li>Yapılan işlemlerin kişisel verilerin aktarıldığı üçüncü kişilere bildirilmesini isteme,</li>
+                        <li>Münhasıran otomatik sistemler ile analiz edilmesi sonucu aleyhinize bir sonucun ortaya çıkmasına itiraz etme,</li>
+                        <li>Kişisel verilerin kanuna aykırı işlenmesi sebebiyle zarara uğramanız halinde zararın giderilmesini talep etme.</li>
+                    </ol>
+                </div>
+
+                <div class="legal-section">
+                    <h2>8. İLETİŞİM</h2>
+                    <p>Kanun kapsamındaki haklarınızı kullanmak için, kimlik bilgilerinizi ve talebinizi içeren başvurunuzu yazılı olarak veya Kişisel Verileri Koruma Kurulu tarafından belirlenen diğer yöntemlerle Veri Sorumlusu’na iletebilirsiniz.</p>
+                    <ul>
+                        <li><strong>Veri Sorumlusu:</strong> DüConnect Mobil Uygulaması</li>
+                        <li><strong>E-Posta:</strong> <a href="mailto:duconnectresmi@gmail.com" style="color: var(--primary-color); text-decoration: none;">duconnectresmi@gmail.com</a></li>
+                        <li><strong>Adres:</strong> Düzce Merkez, Türkiye</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer with Legal Links -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">DüConnect</div>
+                <div class="footer-links">
+                    <a href="gizlilik.html">Gizlilik Sözleşmesi</a>
+                    <a href="kvkk.html">KVKK Aydınlatma Metni</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 DüConnect. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Back to Top Button -->
+    <button id="backToTop" class="back-to-top" onclick="scrollToTop()" title="Yukarı Çık">
+        <i data-lucide="arrow-up" style="width: 20px; height: 20px;"></i>
+    </button>
+
+    <script src="script.js"></script>
+    <script>
+      lucide.createIcons();
+    </script>
+</body>
+</html>
